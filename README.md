@@ -18,7 +18,7 @@ composer require haosheng0211/laravel-captcha
 You can publish the config file with:
 
 ```bash
-php artisan vendor:publish --tag="laravel-captcha-config"
+php artisan vendor:publish --tag="captcha-config"
 ```
 
 This is the contents of the published config file:
