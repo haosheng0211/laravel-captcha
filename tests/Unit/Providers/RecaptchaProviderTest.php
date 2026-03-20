@@ -3,6 +3,7 @@
 // 檔案位置：tests/Unit/Providers/RecaptchaProviderTest.php
 // 執行指令：vendor/bin/pest --filter=RecaptchaProviderTest
 
+use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Support\Facades\Http;
 use MrJin\Captcha\Providers\RecaptchaProvider;
 
@@ -96,7 +97,7 @@ it('returns false for empty token', function () {
 it('returns false when connection fails', function () {
     // Arrange
     Http::fake([
-        'www.google.com/recaptcha/api/siteverify' => fn () => throw new \Illuminate\Http\Client\ConnectionException,
+        'www.google.com/recaptcha/api/siteverify' => fn () => throw new ConnectionException,
     ]);
 
     // Act

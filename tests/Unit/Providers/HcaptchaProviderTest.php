@@ -3,6 +3,7 @@
 // 檔案位置：tests/Unit/Providers/HcaptchaProviderTest.php
 // 執行指令：vendor/bin/pest --filter=HcaptchaProviderTest
 
+use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Support\Facades\Http;
 use MrJin\Captcha\Providers\HcaptchaProvider;
 
@@ -62,7 +63,7 @@ it('returns false for empty token', function () {
 it('returns false when connection fails', function () {
     // Arrange
     Http::fake([
-        'api.hcaptcha.com/siteverify' => fn () => throw new \Illuminate\Http\Client\ConnectionException,
+        'api.hcaptcha.com/siteverify' => fn () => throw new ConnectionException,
     ]);
 
     // Act
